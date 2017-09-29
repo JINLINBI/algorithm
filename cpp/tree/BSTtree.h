@@ -22,6 +22,10 @@ public:
     bool preOrder();
     void Print();
     void _Print(TNode*);
+    void PreOrderTraverse();
+    void _preOrderTraverse(TNode *);
+    void InOrderTraverse();
+    void _inOrderTraverse(TNode *);
 };
 
 Tree::Tree(DataType e){
@@ -77,6 +81,7 @@ bool Tree::_preOrder(TNode* rt){
 void Tree::Print(){
     _Print(root);
 }
+
 void Tree::_Print(TNode* root){
     if(!root)
         return ;
@@ -97,4 +102,30 @@ void Tree::_Print(TNode* root){
             cout << endl;
         }
     }
+}
+
+void Tree::PreOrderTraverse(){
+    _preOrderTraverse(root);
+    cout << endl;
+}
+
+void Tree::_preOrderTraverse(TNode* t){
+   if(t){
+        cout << t->data << " ";
+        _preOrderTraverse(t->lchild);
+        _preOrderTraverse(t->rchild);
+   }
+}
+
+void Tree::InOrderTraverse(){
+    _inOrderTraverse(root);
+    cout << endl;
+}
+
+void Tree::_inOrderTraverse(TNode* t){
+   if(t){
+        _inOrderTraverse(t->lchild);
+        cout << t->data << " ";
+        _inOrderTraverse(t->rchild);
+   }
 }
